@@ -61,6 +61,17 @@
                             }
                     }
                     
+                    shuffle()
+                    {
+                        for(var i = 0; i < 52; i++)
+                            {
+                                var r = Math.floor(Math.random() * this._deck.length);
+                                var template = this._deck[i];
+                                this._deck[i] = this._deck[r];
+                                this._deck[r] = template;
+                            }
+                    }
+                    
                     get deckresult()
                     {
                         
@@ -73,11 +84,13 @@
                         return consequence;
                     }
                 }
+            
             var acard = new Card(1, 1);
             output += acard.cardresult;
             output += "<br />" + "--------------------------------------------------"
             
             var adeck = new Deck()
+            adeck.shuffle();
             output += "<br />" + adeck.deckresult;
             
             outputAreaRef.innerHTML = output;
