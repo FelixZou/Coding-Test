@@ -27,7 +27,35 @@
     <body>
         <div id="outputArea"></div>
         <script>
+            var outputAreaRef = document.getElementById("outputArea");
+            var output = "";
             
+            class Card()
+            {
+                constructor(suit, value)
+                {
+                    this._suit = suit;
+                    this._value = value;
+                }
+                
+                suitset()
+                {
+                    var Allsuit = ["", "Heart", "Diamond", "Spade", "Club"];
+                }
+                
+                valueset()
+                {
+                    var Allvalue = ["", "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"];
+                }
+                
+                get result()
+                {
+                    return Allvalue[this._value] + " of " + Allsuit[this._suit];
+                }
+                
+                var acard = new Card(1, 1);
+                output += acard.result;
+            }
         </script>
     </body>
 </html>
