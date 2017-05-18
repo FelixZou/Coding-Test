@@ -38,7 +38,7 @@
                     this._value = value;
                 }
                 
-                get result()
+                get cardresult()
                 {
                     var Allsuit = ["", "Heart", "Diamond", "Spade", "Club"];
                     var Allvalue = ["", "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"];
@@ -46,8 +46,39 @@
                 }
             }
             
+            class Deck
+                {
+                    constructor()
+                    {
+                        this._deck = [];
+                        
+                        for(var i = 1; i <= 4; i++)
+                            {
+                                for(var j = 1; j <= 13; j++)
+                                    {
+                                        this._deck.push(new Card(i, j))
+                                    }
+                            }
+                    }
+                    
+                    get deckresult()
+                    {
+                        
+                        var consequence = "";
+                        
+                        for(var n = 0; n < 52; n++)
+                            {
+                                consequence += n + 1 + ": " + this._deck[n].cardresult + "<br />";
+                            }
+                        return consequence;
+                    }
+                }
             var acard = new Card(1, 1);
-            output += acard.result;
+            output += acard.cardresult;
+            output += "<br />" + "--------------------------------------------------"
+            
+            var adeck = new Deck()
+            output += "<br />" + adeck.deckresult;
             
             outputAreaRef.innerHTML = output;
         </script>
