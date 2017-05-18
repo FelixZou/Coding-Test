@@ -30,7 +30,7 @@
             var outputAreaRef = document.getElementById("outputArea");
             var output = "";
             
-            class Card()
+            class Card
             {
                 constructor(suit, value)
                 {
@@ -38,24 +38,18 @@
                     this._value = value;
                 }
                 
-                suitset()
-                {
-                    var Allsuit = ["", "Heart", "Diamond", "Spade", "Club"];
-                }
-                
-                valueset()
-                {
-                    var Allvalue = ["", "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"];
-                }
-                
                 get result()
                 {
+                    var Allsuit = ["", "Heart", "Diamond", "Spade", "Club"];
+                    var Allvalue = ["", "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"];
                     return Allvalue[this._value] + " of " + Allsuit[this._suit];
                 }
-                
-                var acard = new Card(1, 1);
-                output += acard.result;
             }
+            
+            var acard = new Card(1, 1);
+            output += acard.result;
+            
+            outputAreaRef.innerHTML = output;
         </script>
     </body>
 </html>
