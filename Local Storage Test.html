@@ -96,19 +96,38 @@
                         for(var i = 0; i < 52; i++)
                         {
                             var empty = new Card();
-                            empty = deckobject._deck[i];
+                            empty.initialisefromcardpdo(deckobject._deck[i]);
                             this._deck.push(empty);
                         }
                     }
                 }
             
-            var acard = new Card(1, 1);
+            var a = Math.floor(Math.random() * 4 + 1);
+            var b = Math.floor(Math.random() * 13 + 1);
+            var acard = new Card(a, b);
             output += acard.cardresult;
-            output += "<br />" + "--------------------------------------------------"
+            output += "<br />" + "--------------------------------------------------";
             
-            var adeck = new Deck()
+            var adeck = new Deck();
             adeck.shuffle();
             output += "<br />" + adeck.deckresult;
+            output += "--------------------------------------------------";
+            
+            var cardstring = JSON.stringify(acard);
+            localStorage.setItem("KeyA", cardstring);
+            
+            var newcard = JSON.parse(localStorage.getItem("KeyA"));
+            var emptycard = new Card();
+            emptycard.initialisefromcardpdo(newcard);
+            output += "<br />" + emptycard.cardresult;
+            
+            var deckstring = JSON.stringify(adeck);
+            localStorage.setItem("KeyB", deckstring);
+            
+            var newdeck = JSON.parse(localStorage.getItem("KeyB"));
+            var emptydeck = new Deck();
+            emptydeck.initialisefromdeckpdo(newdeck);
+            output += "<br />" + emptydeck.deckresult;
             
             outputAreaRef.innerHTML = output;
         </script>
