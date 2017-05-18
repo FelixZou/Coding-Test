@@ -44,6 +44,12 @@
                     var Allvalue = ["", "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"];
                     return Allvalue[this._value] + " of " + Allsuit[this._suit];
                 }
+                
+                initialisefromcardpdo(cardobject)
+                {
+                    this._suit = cardobject._suit;
+                    this._value = cardobject._value;
+                }
             }
             
             class Deck
@@ -82,6 +88,17 @@
                                 consequence += n + 1 + ": " + this._deck[n].cardresult + "<br />";
                             }
                         return consequence;
+                    }
+                    
+                    initialisefromdeckpdo(deckobject)
+                    {
+                        this._deck = [];
+                        for(var i = 0; i < 52; i++)
+                        {
+                            var empty = new Card();
+                            empty = deckobject._deck[i];
+                            this._deck.push(empty);
+                        }
                     }
                 }
             
