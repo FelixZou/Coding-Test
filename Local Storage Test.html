@@ -102,6 +102,15 @@
                     }
                 }
             
+            function test(input, expectedoutput)
+            {
+                if(input === expectedoutput)
+                    {
+                        return "[PASS]"
+                    }
+                else return "[FAIL]"
+            }
+            
             var a = Math.floor(Math.random() * 4 + 1);
             var b = Math.floor(Math.random() * 13 + 1);
             var acard = new Card(a, b);
@@ -119,7 +128,9 @@
             var newcard = JSON.parse(localStorage.getItem("KeyA"));
             var emptycard = new Card();
             emptycard.initialisefromcardpdo(newcard);
-            output += "<br />" + emptycard.cardresult;
+            //output += "<br />" + emptycard.cardresult;
+            var cardresult = test(acard.cardresult, emptycard.cardresult);
+            output += "<br />" + cardstring + "<br />" + "Local storage test for card class: " + cardresult + "<br />";
             
             var deckstring = JSON.stringify(adeck);
             localStorage.setItem("KeyB", deckstring);
@@ -127,7 +138,9 @@
             var newdeck = JSON.parse(localStorage.getItem("KeyB"));
             var emptydeck = new Deck();
             emptydeck.initialisefromdeckpdo(newdeck);
-            output += "<br />" + emptydeck.deckresult;
+            var deckresult = test(adeck.deckresult, emptydeck.deckresult);
+            output += "<br />" + deckstring + "<br />" + "Local storage test for deck class: " + deckresult;
+            //output += "<br />" + emptydeck.deckresult;
             
             outputAreaRef.innerHTML = output;
         </script>
